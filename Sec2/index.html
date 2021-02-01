@@ -1,0 +1,72 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue3 Start</title>
+  <script src="https://unpkg.com/vue@next"></script>
+  <style>
+    .box {
+      padding: 20px;
+      width: 200px;
+      text-align: center;
+      background-color: navajowhite;
+      margin: 10px;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+  <h1>Hello Bob</h1>
+  <div id="app">
+    <h2>I like to read this book:</h2>
+    <div v-if="showBooks">
+      <p>1.<i>{{title}}</i>; {{author}} at age {{age}} </p>
+      <button v-on:click="age++">Increase age</button>
+      <!-- v-on: shortcut @ -->
+      <button @click="age--">Decrease age</button> 
+      <div @click="changeTitle('Brave New World', 'Huxley')">Change book title</div>
+    </div>
+    <button @click="toggleShowBooks">
+      <span v-if="showBooks">Hide Books</span>
+      <span v-else>Show Books</span>
+    </button>
+    <div v-show="showBooks">Books are showing!</div>
+    <div class="box" @mouseover="handleEvent($event, 5)">mouse over</div>
+    <div class="box" @mouseleave="handleEvent">mouse leave</div>
+    <div class="box" @dblclick="handleEvent($event, 'clkx2')">double click</div>
+    <div class="box" @mousemove="handleMove">move in box {{x}} {{y}}</div>
+  </div>
+  <script>
+    const app = Vue.createApp({
+      // data, functions
+      data() {
+        return {
+          showBooks: true,
+          title: "War and Peace",
+          author: "Leo Tolstoy",
+          age: 45,
+          x: 0, y: 0
+        }
+      },
+      methods: {
+        changeTitle(title, author) {
+          this.title = title
+          this.author = author
+        },
+        toggleShowBooks(){  
+          this.showBooks = !this.showBooks
+        },
+        handleEvent(e, data) {
+          console.log(e)
+        },
+        handleMove(e) {
+          this.x = e.offsetX
+          this.y = e.offsetY
+        }
+      }
+    })
+    app.mount("#app")
+    console.log("Hello vue3")
+  </script>
+</body>
+</html>
