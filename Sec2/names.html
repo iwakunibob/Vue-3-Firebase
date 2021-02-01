@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    h1, div, p, span {
+      font-size: 33px; 
+      font-family: Arial, Helvetica, sans-serif;
+    }
+  </style>
+  <title>Vue Project</title>
+  <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+  <div id="app"> 
+    <!-- v-text is vue directive and name is bridge property -->
+    <p>My first name is <span v-text="firstName"></span>.</p> 
+    <!-- v-text is vue directive and name is bridge property -->
+    <p>My last name is <span v-html="lastName"></span>.</p> 
+    <!-- Simpler form is {{name}} -->
+    <p>Her name is <span>{{herName}}</span>.</p> 
+    <img v-bind:src="url" v-bind:title="title" v-bind:alt="title">
+  </div>
+  <script>
+    const app = Vue.createApp({
+      data() { 
+        return {
+          firstName: "Robert",
+          lastName: "<b>Laurie</b>",
+          herName: "Cynthia",
+          url: "logo.png",
+          title: "vue logo"
+        }
+      }
+    })
+  </script>
+</body>
+</html>
