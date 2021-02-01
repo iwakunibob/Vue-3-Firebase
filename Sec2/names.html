@@ -13,7 +13,7 @@
   <script src="https://unpkg.com/vue@next"></script>
 </head>
 <body>
-  <div id="app"> 
+  <div id="namesLogo"> 
     <!-- v-text is vue directive and name is bridge property -->
     <p>My first name is <span v-text="firstName"></span>.</p> 
     <!-- v-text is vue directive and name is bridge property -->
@@ -23,7 +23,7 @@
     <img v-bind:src="url" v-bind:title="title" v-bind:alt="title">
   </div>
   <script>
-    const app = Vue.createApp({
+    const namesLogo = {
       data() { 
         return {
           firstName: "Robert",
@@ -32,12 +32,9 @@
           url: "logo.png",
           title: "vue logo"
         }
-      },
-      methods: {
-
-      }
-    })
-    app.mount("#app")
+      }, 
+    }
+    Vue.createApp(namesLogo).mount("#namesLogo")
   </script>
 </body>
 </html>

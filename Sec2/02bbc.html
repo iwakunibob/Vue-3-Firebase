@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Vue3 Project</title>
+		<meta http-equiv='content-type' content='text/html;charset=utf-8'>
+		<meta name='viewport' content='width=device-width,initial-scale=1.0'>
+		<style>
+			h1,h2,h3,h4,h5,h6,div,p,span{font-family:helvetica;padding:0;margin:0;word-break:break-all}
+			.main_frame{width:300px;height:450px;border:1px blue solid; float: left; margin: 10px;}
+			.photo_frame{height:200px;width:300px;background:red}
+			.photo_size{width:300px;height:200px;}
+			.content_frame{position:relative;padding:5px;width:290px;height:240px;}
+			.title{line-height:30px;font-size:24px;}
+			.summary{font-size:14px;line-height:20px;}
+			.category{position:absolute;bottom:5px;font-weight:bold}
+			.gap{height:15px;}
+		</style>
+		<script src="https://unpkg.com/vue@next"></script>
+	<body>
+		<div id='newsHeadlines'>
+			<div class='main_frame' v-for="element in article_set">
+				<div class='photo_frame'>
+					<img v-bind:src="element.url" alt='image' class='photo_size'/>
+				</div>
+				<div class='content_frame'>
+					<div class='gap'></div>
+					<div class='title'>
+						<h2>{{element.title}}</h2>
+					</div>
+					<div class='gap'></div>
+					<div class='summary'>
+						<p>{{element.summary}}</p>
+					</div>
+					<div class='gap'></div>
+					<div class='category'><span>{{element.category}}</span></div>
+				</div>
+			</div>
+		</div>
+
+	<script type='text/javascript'>
+		const newsHeadlines = {
+			data() {
+				return {
+					article_set: [
+					{ url:'image1.jpg', title:'New Engine Developed', category:'science',
+						summary:'Recently, a new engine has been developed. As for what it can do, I have no idea.',
+					},
+					{ url:'image2.jpg', title:'A Blue Helmet', category:'boring',
+						summary:'I honestly have no idea why a blue helmet can be reported in the news. Is it because it is a blue helmet displayed on a blue background???',
+			 		},
+					{ url:'image3.jpg', title:'King of the Internet!', category:'Internet',
+						summary:'His highness Dogge has granted us the honor of appearing on our course DEMO. I feel so honored!!! So what should I say next???',
+			 		},
+					{	url:'image4.jpg', title:'Shocking Cat', category:'Internet Royalty',
+						summary:'Any image of cat can get hot on the internet. Smily cat, sleepy cat, smelly cat, shocking cat...',
+					},
+					{ url:'image5.jpg', title:'A Chimp', category:'Animal',
+						summary:'I do not know what to write here... So I am gonna repeat. I do not know what to write here... So I am gonna repeat.',
+					},
+					{	url:'image6.jpg', title:'Chinese HAN Sword', category:'Military',
+						summary:'Finally, something cool!!! Chinese Han-Dynasty Sword!!! Forged two millennium agao, so razor sharp today!',
+					}] // Array with six elements
+				}
+			},
+		}
+		Vue.createApp(newsHeadlines).mount("#newsHeadlines")
+	</script>	
+	</body>
+</html>
